@@ -1,0 +1,23 @@
+camera:
+  id: cam_01
+  source: "rtsp://user:password@192.168.1.10/stream"
+  reconnect_sec: 2
+
+models:
+  detector_path: "models/detector.pt"
+  person_confidence: 0.50
+  fire_confidence: 0.65
+
+zones:
+  restricted_01:
+    - [ 0.15, 0.20 ]
+    - [ 0.85, 0.20 ]
+    - [ 0.90, 0.90 ]
+    - [ 0.10, 0.90 ]
+events:
+confirmation_n: 3
+confirmation_m: 5
+cooldown_sec: 10
+storage:
+root: "events"
+retention_days: 30

@@ -1,0 +1,61 @@
+```gitignore
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# PyCharm
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Test and coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Logs
+logs/*.log
+logs/*.log.*
+
+# Temporary files
+*.tmp
+*.bak
+.DS_Store
+Thumbs.db
+
+# Local secrets
+.env
+.env.*
+
+# Local videos and generated data
+data/videos/*
+!data/videos/.gitkeep
+
+# Datasets
+datasets/*
+!datasets/.gitkeep
+
+# Model weights
+models/*.pt
+models/*.onnx
+models/*.engine
+models/*.pth
+
+# Runtime events and databases
+events/*
+!events/.gitkeep
+*.db
+*.sqlite
+*.sqlite3
+
+# Generated output
+runs/
+outputs/
+

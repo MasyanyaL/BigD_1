@@ -1,0 +1,10 @@
+#пока такие
+opencv-python
+numpy
+PyYAML
+fastapi
+uvicorn[standard]
+psutil
+pytest
+httpx
+ultralytics

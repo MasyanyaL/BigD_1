@@ -35,8 +35,7 @@ Thumbs.db
 .env.*
 
 # Local videos and generated data
-data/videos/*
-!data/videos/.gitkeep
+datav/
 
 # Datasets
 datasets/*

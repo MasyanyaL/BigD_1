@@ -36,8 +36,8 @@ def main() -> None:
         cv2.namedWindow(window_name, cv2.WINDOW_NORMAL)
         cv2.resizeWindow(window_name, 1280, 720)
 
+        last_log_time = time.time()
         while True:
-            # Засекаем время начала обработки кадра
             start_time = time.perf_counter()
 
             try:
@@ -47,6 +47,10 @@ def main() -> None:
                 break
 
             fps = fps_meter.tick()
+
+            if time.time() - last_log_time >= 5.0:
+                logging.info(f"Текущий FPS конвейера: {fps:.2f}")
+                last_log_time = time.time()
 
             cv2.putText(
                 frame,

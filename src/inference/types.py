@@ -11,6 +11,7 @@ class Detection:
     y1: int
     x2: int
     y2: int
+    model_name: str = ""
 
     @property
     def center(self) -> tuple[int, int]:

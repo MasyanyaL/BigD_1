@@ -1,23 +1,50 @@
 camera:
-  id: cam_01
-  source: "rtsp://user:password@192.168.1.10/stream"
+  id: "${CAMERA_ID:cam_01}"
+  # Пароль RTSP хранится в .env, в репозиторий не попадает
+  source: "${CAMERA_SOURCE}"
   reconnect_sec: 2
 
 models:
-  detector_path: "models/detector.pt"
+  # Порог для события "person in restricted zone"
   person_confidence: 0.50
+  # Порог для события fire
   fire_confidence: 0.65
+
+  general:
+    path: "models/yolo11n.pt"
+    confidence: 0.40
+    allowed_classes: [person, car, truck, bus, motorcycle, bicycle]
+
+  ppe:
+    path: "models/best2.pt"
+    confidence: 0.40
+    allowed_classes: [Gloves, Hard_hat, Mask, Safety_boots, Vest]
+
+  fire_smoke:
+    path: "models/firesmokebest.pt"
+    confidence: 0.40
+    allowed_classes: [fire, smoke]
+
+  spill:
+    path: "models/spill.pt"
+    confidence: 0.15
+    allowed_classes: [Spill]
 
 zones:
   restricted_01:
-    - [ 0.15, 0.20 ]
-    - [ 0.85, 0.20 ]
-    - [ 0.90, 0.90 ]
-    - [ 0.10, 0.90 ]
+    - [0.15, 0.20]
+    - [0.85, 0.20]
+    - [0.90, 0.90]
+    - [0.10, 0.90]
+
 events:
-confirmation_n: 3
-confirmation_m: 5
-cooldown_sec: 10
+  confirmation_n: 3
+  confirmation_m: 5
+  cooldown_sec: 10
+  # Через сколько секунд без обновления считаем трек завершённым
+  track_ttl_sec: 60
+  missing_frames_threshold: 15 # закрыть событие после 15 кадров без детекции
+
 storage:
-root: "events"
-retention_days: 30
+  root: "events"
+  retention_days: 30

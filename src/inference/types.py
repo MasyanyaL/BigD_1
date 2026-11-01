@@ -12,6 +12,7 @@ class Detection:
     x2: int
     y2: int
     model_name: str = ""
+    track_id: int | None = None
 
     @property
     def center(self) -> tuple[int, int]:

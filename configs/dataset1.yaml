@@ -1,0 +1,13 @@
+# Путь указывается относительно файла dataset1.yaml
+path: ../datasets/ppe
+train: train/images
+val: valid/images
+test: test/images
+
+names:
+  0: Hard_hat
+  1: Vest
+  2: Gloves
+  3: Mask
+  4: Safety_boots
+  

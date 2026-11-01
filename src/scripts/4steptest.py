@@ -57,14 +57,14 @@ fire_smoke_detector = Detector(
     },
 )
 
-# spill_detector = Detector(
-#     model_path="models/spill.pt",
-#     confidence=0.4,
-#     model_name="spill",
-#     allowed_classes={
-#         "spill",
-#     },
-# )
+spill_detector = Detector(
+    model_path="models/spill.pt",
+    confidence=0.15,
+    model_name="spill",
+    allowed_classes={
+        "Spill",
+    },
+)
 
 # --------------------------------------------------
 # 3. Создание агрегатора
@@ -75,7 +75,7 @@ aggregator = DetectionAggregator(
         "general": general_detector,
         "ppe": ppe_detector,
         "fire_smoke": fire_smoke_detector,
-        #"spill": spill_detector,
+        "spill": spill_detector,
     }
 )
 
@@ -97,7 +97,7 @@ logging.basicConfig(
 def main() -> None:
 
     source = VideoSource(
-        source="datav/fireandpeople2.mp4",
+        source="datav/spill4.mp4",
         reconnect_sec=2.0,
     )
 
